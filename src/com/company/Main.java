@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<Pinguim> margemDireita = new ArrayList<>();
-        ArrayList<Pinguim> margemEsquerda = new ArrayList<>();
+        ArrayList<Pinguim> margemInicial = new ArrayList<>();
+        ArrayList<Pinguim> margemFinal = new ArrayList<>();
         ArrayList<Pinguim> jangada = new ArrayList<>();
         ArrayList<Heuristica> listHeuristica = new ArrayList<>();
         ArrayList<CustoReal> listCustoReal = new ArrayList<>();
@@ -23,12 +23,12 @@ public class Main {
         Pinguim p3 = new Pinguim("blue", true);
         Pinguim f3 = new Pinguim("blue", false);
 
-        margemDireita.add(p1);
-        margemDireita.add(f1);
-        margemDireita.add(p2);
-        margemDireita.add(f2);
-        margemDireita.add(p3);
-        margemDireita.add(f3);
+        margemInicial.add(p1);
+        margemInicial.add(f1);
+        margemInicial.add(p2);
+        margemInicial.add(f2);
+        margemInicial.add(p3);
+        margemInicial.add(f3);
 
         listCustoReal.add(new CustoReal(p1,5));
         listCustoReal.add(new CustoReal(f1,2));
