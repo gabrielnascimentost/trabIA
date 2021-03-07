@@ -36,30 +36,36 @@ public class Regras {
         return false;
     }
 
-    static int calculaFuncaoPinguimSelecionado(ArrayList<Pinguim> margemInicial,Pinguim pinguimSelecionado){ //verifica todos os pinguins da margem e calcula o f final
+    static int calculaFuncaoPinguinsSelecionados(ArrayList<Pinguim> margemInicial,ArrayList<Pinguim> jangada){ //verifica todos os pinguins da margem e calcula o f final
         int g = 0;
-        for(Pinguim aux : margemInicial){
+        ArrayList<Pinguim> margemInicialAux = margemInicial;
+        margemInicialAux.remove(jangada.get(0));
+        margemInicialAux.remove(jangada.get(1));
+
+        for(Pinguim aux : margemInicialAux){
             g = g + aux.getCustoReal();
         }
-        return g + margemInicial.size();
+        return g + margemInicialAux.size();
     }
 
 
     static Pinguim retornaPinguimCandidato(ArrayList<Pinguim> margemInicial){  //verifica qual pinguim ira ser selecionado
 
-        HashMap<Integer, Pinguim> funcaoPinguins = new HashMap<Integer, Pinguim>();
+        ArrayList<Integer> funcaoPinguins = new ArrayList<>();
         int menorFuncao = 100;
-
+        int aux = 0;
         for(int i = 0; i < margemInicial.size(); i++){
-            funcaoPinguins.put(calculaFuncaoPinguimSelecionado(margemInicial,margemInicial.get(i)),margemInicial.get(i));
+            //aux = calculaFuncaoPinguimSelecionado(margemInicial,margemInicial.get(i));
+            funcaoPinguins.add(aux);
         }
 
-        for (Integer i : funcaoPinguins.keySet()){
+        for (Integer i : funcaoPinguins){
             if(i < menorFuncao)
             menorFuncao = i;
         }
+        int indexPinguim = funcaoPinguins.indexOf(menorFuncao);
 
-        return funcaoPinguins.get(menorFuncao);
+        return margemInicial.get(indexPinguim);
     }
 
 

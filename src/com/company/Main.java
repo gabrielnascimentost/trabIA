@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import static com.company.Regras.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -28,5 +30,9 @@ public class Main {
         margemInicial.add(p3);
         margemInicial.add(f3);
 
+        jangada.add(p3);
+        jangada.add(f3);
+
+        System.out.println(calculaFuncaoPinguinsSelecionados(margemInicial,jangada));
     }
 }

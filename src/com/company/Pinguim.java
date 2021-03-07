@@ -34,4 +34,13 @@ public class Pinguim {
     public void setCustoReal(int custoReal) {
         this.custoReal = custoReal;
     }
+
+    @Override
+    public String toString() {
+        return "Pinguim{" +
+                "cor='" + cor + '\'' +
+                ", ehPai=" + ehPai +
+                ", custoReal=" + custoReal +
+                '}';
+    }
 }
