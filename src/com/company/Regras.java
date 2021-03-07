@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Regras {
 
@@ -28,5 +29,38 @@ public class Regras {
         }
         return false;
     }
+
+    static boolean verificaMargemFinal(ArrayList<Pinguim> margemFinal){
+        if(margemFinal.size() == 6)
+            return true;
+        return false;
+    }
+
+    static int calculaFuncaoPinguimSelecionado(ArrayList<Pinguim> margemInicial,Pinguim pinguimSelecionado){ //verifica todos os pinguins da margem e calcula o f final
+        int g = 0;
+        for(Pinguim aux : margemInicial){
+            g = g + aux.getCustoReal();
+        }
+        return g + margemInicial.size();
+    }
+
+
+    static Pinguim retornaPinguimCandidato(ArrayList<Pinguim> margemInicial){  //verifica qual pinguim ira ser selecionado
+
+        HashMap<Integer, Pinguim> funcaoPinguins = new HashMap<Integer, Pinguim>();
+        int menorFuncao = 100;
+
+        for(int i = 0; i < margemInicial.size(); i++){
+            funcaoPinguins.put(calculaFuncaoPinguimSelecionado(margemInicial,margemInicial.get(i)),margemInicial.get(i));
+        }
+
+        for (Integer i : funcaoPinguins.keySet()){
+            if(i < menorFuncao)
+            menorFuncao = i;
+        }
+
+        return funcaoPinguins.get(menorFuncao);
+    }
+
 
 }
