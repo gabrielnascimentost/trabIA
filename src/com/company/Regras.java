@@ -80,23 +80,38 @@ public class Regras {
     }
 
 
-    static Pinguim retornaPinguimCandidato(ArrayList<Pinguim> margemInicial, ArrayList<Pinguim> jangada){  //verifica qual pinguim ira ser selecionado
+    static void retornaPinguimCandidato(ArrayList<Pinguim> margemInicial){  //verifica qual pinguim ira ser selecionado
 
-        ArrayList<Integer> funcaoPinguins = new ArrayList<>();
-        int menorFuncao = 100;
-        int aux = 0;
+        ArrayList<Pinguim> jangada = new ArrayList<>();
+        int[][] candidados = new int[margemInicial.size()][margemInicial.size()];
+
+        int menorFuncao = Integer.MAX_VALUE;
+        int auxI = 0;
+        int auxJ = 0;
+
         for(int i = 0; i < margemInicial.size(); i++){
-            //aux = calculaFuncaoPinguimSelecionado(margemInicial,margemInicial.get(i));
-            funcaoPinguins.add(aux);
+            for(int j = i + 1; j <margemInicial.size(); j++){
+                jangada.add(margemInicial.get(i));
+                jangada.add(margemInicial.get(j));
+                if(verificaRegraJangada(jangada)){
+                    candidados[i][j] = calculaFuncaoPinguinsSelecionados(margemInicial,jangada);
+                }else{
+                    jangada.remove(margemInicial.get(i));
+                    jangada.remove(margemInicial.get(j));
+                }
+            }
         }
 
-        for (Integer i : funcaoPinguins){
-            if(i < menorFuncao)
-            menorFuncao = i;
+        for(int i = 0; i < margemInicial.size(); i++){
+            for(int j = i + 1; j <margemInicial.size(); j++){
+                if(candidados[i][j] < menorFuncao)
+                    menorFuncao = candidados[i][j];
+                    auxI = i;
+                    auxJ = j;
+            }
         }
-        int indexPinguim = funcaoPinguins.indexOf(menorFuncao);
 
-        return margemInicial.get(indexPinguim);
+        System.out.println(margemInicial.get(auxI).toString() + "\n" + margemInicial.get(auxJ));
     }
 
 

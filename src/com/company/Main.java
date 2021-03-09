@@ -33,17 +33,21 @@ public class Main {
         jangada.add(p3);
         jangada.add(f3);
 
-        descarregaMargemFinal(margemFinal, jangada);
+        retornaPinguimCandidato(margemInicial);
 
-        for(Pinguim obj: margemFinal){
-            System.out.println("Pinguins na margem esquerda: ");
-            System.out.println(obj.toString());
-        }
+        //System.out.println(calculaFuncaoPinguinsSelecionados(margemInicial,jangada));
 
-        for(Pinguim obj: jangada){
-            System.out.println("Pinguins na jangada: ");
-            System.out.println(obj.toString());
-        }
+//        descarregaMargemFinal(margemFinal, jangada);
+//
+//        for(Pinguim obj: margemFinal){
+//            System.out.println("Pinguins na margem esquerda: ");
+//            System.out.println(obj.toString());
+//        }
+//
+//        for(Pinguim obj: jangada){
+//            System.out.println("Pinguins na jangada: ");
+//            System.out.println(obj.toString());
+//        }
 
     }
 }
