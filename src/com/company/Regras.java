@@ -69,7 +69,7 @@ public class Regras {
 
     static int calculaFuncaoPinguinsSelecionados(ArrayList<Pinguim> margemInicial,ArrayList<Pinguim> jangada){ //verifica todos os pinguins da margem e calcula o f final
         int g = 0;
-        ArrayList<Pinguim> margemInicialAux = margemInicial;
+        ArrayList<Pinguim> margemInicialAux = (ArrayList<Pinguim>) margemInicial.clone();
         margemInicialAux.remove(jangada.get(0));
         margemInicialAux.remove(jangada.get(1));
 
@@ -90,15 +90,13 @@ public class Regras {
         int auxJ = 0;
 
         for(int i = 0; i < margemInicial.size(); i++){
-            for(int j = i + 1; j <margemInicial.size(); j++){
+            for(int j = 1; j < margemInicial.size(); j++){
                 jangada.add(margemInicial.get(i));
                 jangada.add(margemInicial.get(j));
                 if(verificaRegraJangada(jangada)){
                     candidados[i][j] = calculaFuncaoPinguinsSelecionados(margemInicial,jangada);
-                }else{
-                    jangada.remove(margemInicial.get(i));
-                    jangada.remove(margemInicial.get(j));
                 }
+                jangada.clear();
             }
         }
 
@@ -111,7 +109,7 @@ public class Regras {
             }
         }
 
-        System.out.println(margemInicial.get(auxI).toString() + "\n" + margemInicial.get(auxJ));
+        System.out.println("Candidados a viagem: \n\n"  + margemInicial.get(auxI).toString() + "\n" + margemInicial.get(auxJ) + "\n\nFuncao obtida: " + candidados[auxI][auxJ]);
     }
 
 

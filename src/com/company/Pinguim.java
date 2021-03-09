@@ -2,6 +2,7 @@ package com.company;
 
 public class Pinguim {
     private String cor;
+    private String genealogia;
     private boolean ehPai;
     private int custoReal;
 
@@ -9,6 +10,11 @@ public class Pinguim {
         this.cor = cor;
         this.ehPai = ehPai;
         this.custoReal = custoReal;
+        if(ehPai){
+            genealogia = "Pai";
+        }else{
+            genealogia = "Filho";
+        }
     }
 
     public String getCor() {
@@ -37,10 +43,6 @@ public class Pinguim {
 
     @Override
     public String toString() {
-        return "Pinguim{" +
-                "cor='" + cor + '\'' +
-                ", ehPai=" + ehPai +
-                ", custoReal=" + custoReal +
-                '}';
+        return "Pinguim " + cor + " | " + genealogia + " | Custo Real: " + custoReal;
     }
 }

@@ -30,9 +30,6 @@ public class Main {
         margemInicial.add(p3);
         margemInicial.add(f3);
 
-        jangada.add(p3);
-        jangada.add(f3);
-
         retornaPinguimCandidato(margemInicial);
 
         //System.out.println(calculaFuncaoPinguinsSelecionados(margemInicial,jangada));
