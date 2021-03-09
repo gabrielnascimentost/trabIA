@@ -19,21 +19,52 @@ public class Regras {
 
     static boolean verificaMargem(ArrayList<Pinguim> margem){   //filho não pode ficar sozinho na margem sem seu pai
 
-        for(int i = 0; i < margem.size(); i++){
-            for(int j = 1; j <margem.size(); j++){
-                if(margem.get(i).getCor().equals(margem.get(j).getCor())) //pai e filho da mesma cor estão na mesma margem
-                    return true;
-                else if(margem.get(i).isEhPai() && !margem.get(j).getCor().equals(margem.get(i).getCor())) //somente o pai esta na margem
-                    return true;
+        if(margem.size() == 1 && margem.get(0).isEhPai()){
+            return true;
+        }else if(margem.size() == 1 && !margem.get(0).isEhPai()){
+            return false;
+        }else{
+            for(int i = 0; i < margem.size(); i++){
+                for(int j = 1; j <= margem.size(); j++){
+                    if(margem.get(i).getCor().equals(margem.get(j).getCor())) //pai e filho da mesma cor estão na mesma margem
+                        return false;
+                    if(!margem.get(i).isEhPai() && !margem.get(i).getCor().equals(margem.get(j).getCor())) //filho na margem sem o pai da mesma cor
+                        return false;
+                }
+
             }
+            return true;
         }
-        return false;
     }
 
     static boolean verificaMargemFinal(ArrayList<Pinguim> margemFinal){
         if(margemFinal.size() == 6)
             return true;
         return false;
+    }
+
+    static ArrayList<Pinguim> descarregaMargemFinal(ArrayList<Pinguim> margemFinal,ArrayList<Pinguim> jangada){
+        boolean descarregou = false;
+        Pinguim aux1 = jangada.get(0); // pai
+        Pinguim aux2 = jangada.get(1); // filho
+
+        margemFinal.add(aux1);
+        jangada.remove(aux1);
+
+        if(!verificaMargem(margemFinal)){
+            jangada.add(aux1);
+            margemFinal.remove(aux1);
+        }
+
+        margemFinal.add(aux2);
+        jangada.remove(aux2);
+
+        if(!verificaMargem(margemFinal)){
+            jangada.add(aux2);
+            margemFinal.remove(aux2);
+        }
+
+        return margemFinal;
     }
 
     static int calculaFuncaoPinguinsSelecionados(ArrayList<Pinguim> margemInicial,ArrayList<Pinguim> jangada){ //verifica todos os pinguins da margem e calcula o f final
@@ -49,7 +80,7 @@ public class Regras {
     }
 
 
-    static Pinguim retornaPinguimCandidato(ArrayList<Pinguim> margemInicial){  //verifica qual pinguim ira ser selecionado
+    static Pinguim retornaPinguimCandidato(ArrayList<Pinguim> margemInicial, ArrayList<Pinguim> jangada){  //verifica qual pinguim ira ser selecionado
 
         ArrayList<Integer> funcaoPinguins = new ArrayList<>();
         int menorFuncao = 100;
