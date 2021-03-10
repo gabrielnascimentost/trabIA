@@ -80,9 +80,8 @@ public class Regras {
     }
 
 
-    static void retornaPinguimCandidato(ArrayList<Pinguim> margemInicial){  //verifica qual pinguim ira ser selecionado
+    static void retornaPinguimCandidato(ArrayList<Pinguim> margemInicial, ArrayList<Pinguim> jangada){  //verifica qual pinguim ira ser selecionado
 
-        ArrayList<Pinguim> jangada = new ArrayList<>();
         int[][] candidados = new int[margemInicial.size()][margemInicial.size()];
 
         int menorFuncao = Integer.MAX_VALUE;
@@ -90,7 +89,7 @@ public class Regras {
         int auxJ = 0;
 
         for(int i = 0; i < margemInicial.size(); i++){
-            for(int j = 1; j < margemInicial.size(); j++){
+            for(int j = i+1; j < margemInicial.size(); j++){
                 jangada.add(margemInicial.get(i));
                 jangada.add(margemInicial.get(j));
                 if(verificaRegraJangada(jangada)){
@@ -102,15 +101,20 @@ public class Regras {
 
         for(int i = 0; i < margemInicial.size(); i++){
             for(int j = i + 1; j <margemInicial.size(); j++){
-                if(candidados[i][j] < menorFuncao)
+                if(candidados[i][j] != 0 && candidados[i][j] < menorFuncao){
                     menorFuncao = candidados[i][j];
                     auxI = i;
                     auxJ = j;
+                }
             }
         }
 
-        System.out.println("Candidados a viagem: \n\n"  + margemInicial.get(auxI).toString() + "\n" + margemInicial.get(auxJ) + "\n\nFuncao obtida: " + candidados[auxI][auxJ]);
-    }
+        jangada.add(margemInicial.get(auxI));
+        jangada.add(margemInicial.get(auxJ));
+
+        margemInicial.remove(auxI);
+        margemInicial.remove(auxJ-1);
+      }
 
 
 }

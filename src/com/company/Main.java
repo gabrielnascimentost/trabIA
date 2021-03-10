@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import static com.company.Regras.*;
+import static com.company.BuscaAEstrela.*;
 
 public class Main {
 
@@ -30,21 +30,7 @@ public class Main {
         margemInicial.add(p3);
         margemInicial.add(f3);
 
-        retornaPinguimCandidato(margemInicial);
-
-        //System.out.println(calculaFuncaoPinguinsSelecionados(margemInicial,jangada));
-
-//        descarregaMargemFinal(margemFinal, jangada);
-//
-//        for(Pinguim obj: margemFinal){
-//            System.out.println("Pinguins na margem esquerda: ");
-//            System.out.println(obj.toString());
-//        }
-//
-//        for(Pinguim obj: jangada){
-//            System.out.println("Pinguins na jangada: ");
-//            System.out.println(obj.toString());
-//        }
+        doBuscaAEstrela(margemInicial,margemFinal,jangada);
 
     }
 }
