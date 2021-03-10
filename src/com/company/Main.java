@@ -12,7 +12,6 @@ public class Main {
         ArrayList<Pinguim> margemInicial = new ArrayList<>();
         ArrayList<Pinguim> margemFinal = new ArrayList<>();
         ArrayList<Pinguim> jangada = new ArrayList<>();
-        Queue<Pinguim> filaPinguins = new PriorityQueue<>();
 
         Pinguim p1 = new Pinguim("red", true, 5);
         Pinguim f1 = new Pinguim("red", false, 2);
