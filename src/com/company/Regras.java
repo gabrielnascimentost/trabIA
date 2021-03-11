@@ -9,7 +9,7 @@ public class Regras {
         Pinguim integrante1 = jangada.get(0); //primeiro pinguim da jangada
         Pinguim integrante2 = jangada.get(1); //segundo pinguim da jangada
 
-        if(integrante1.getCor().equals(integrante2.getCor())) // pai e filho da mesma coisa
+        if(integrante1.getCor().equals(integrante2.getCor())) // pai e filho da mesma cor
             return true;
         else if(!integrante1.isEhPai() && !integrante2.isEhPai()) //filhos de cores diferentes
             return true;
@@ -43,7 +43,7 @@ public class Regras {
         return false;
     }
 
-    static ArrayList<Pinguim> descarregaMargemFinal(ArrayList<Pinguim> margemFinal,ArrayList<Pinguim> jangada){
+    static void descarregaMargemFinal(ArrayList<Pinguim> margemFinal,ArrayList<Pinguim> jangada){
         Pinguim aux1 = jangada.get(0); //
         Pinguim aux2 = jangada.get(1); //
 
@@ -62,8 +62,6 @@ public class Regras {
             jangada.add(aux2);
             margemFinal.remove(aux2);
         }
-
-        return margemFinal;
     }
 
     static int calculaFuncaoPinguinsSelecionados(ArrayList<Pinguim> margemInicial,ArrayList<Pinguim> jangada){ //verifica todos os pinguins da margem e calcula o f final

@@ -29,7 +29,8 @@ public class Main {
         margemInicial.add(p3);
         margemInicial.add(f3);
 
+        System.out.println("\n-------Inicio do Game---------------------\n");
         doBuscaAEstrela(margemInicial,margemFinal,jangada);
-
+        System.out.println("\n-------Fim do Game------------------------\n");
     }
 }

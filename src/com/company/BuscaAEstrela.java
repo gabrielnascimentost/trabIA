@@ -8,7 +8,7 @@ import static com.company.Regras.retornaPinguimCandidato;
 public class BuscaAEstrela {
 
     static void doBuscaAEstrela(ArrayList<Pinguim> margemInicial, ArrayList<Pinguim> margemFinal, ArrayList<Pinguim> jangada){
-        System.out.println("\n-------Inicio do Game---------------------\n");
+
         int i = 1;
 
         while (margemInicial.size() != 0){
@@ -57,17 +57,21 @@ public class BuscaAEstrela {
             }
 
             if(margemInicial.isEmpty()){
-                descarregaMargemFinal(margemFinal,jangada);
-                return;
-            }else {
-                margemInicial.add(jangada.get(0));
+                System.out.println("\n->Margem Incial vazia - ultima iteracao!!\n");
+                margemFinal.add(jangada.get(0));
                 jangada.clear();
+                System.out.println("Pinguins na margem final: ");
+
+                for(Pinguim obj: margemFinal){
+                    System.out.println(obj.toString());
+                }
+
+                return;
             }
+
             i++;
             System.out.println("\n-------------------------------------------\n");
         }
-
-        System.out.println("\n-------Fim do Game---------------------\n");
     }
 
 }
