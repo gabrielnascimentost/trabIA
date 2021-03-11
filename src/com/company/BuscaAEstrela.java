@@ -13,6 +13,10 @@ public class BuscaAEstrela {
 
         while (margemInicial.size() != 0){
 
+//            if(i == 6){
+//
+//            }
+
             System.out.println("Iteracao " + i);
 
             System.out.println("---------Pinguins na margem inicial---------");
@@ -52,31 +56,18 @@ public class BuscaAEstrela {
                 System.out.println(obj.toString());
             }
 
-            margemInicial.add(jangada.get(0));
-            jangada.clear();
+            if(margemInicial.isEmpty()){
+                descarregaMargemFinal(margemFinal,jangada);
+                return;
+            }else {
+                margemInicial.add(jangada.get(0));
+                jangada.clear();
+            }
             i++;
             System.out.println("\n-------------------------------------------\n");
         }
 
-
-
-//        System.out.println("-------------------2º Iteracao-------------------------");
-//
-//        retornaPinguimCandidato(margemInicial,jangada);
-//
-//        System.out.println("\nPinguins na margem inicial após escolha dos candidatos: ");
-//
-//        for(Pinguim obj: margemInicial){
-//            System.out.println(obj.toString());
-//        }
-//
-//        System.out.println("--------------------------------------------\n");
-//        System.out.println("Pinguins na jangada: ");
-//
-//        for(Pinguim obj: jangada){
-//            System.out.println(obj.toString());
-//        }
-
+        System.out.println("\n-------Fim do Game---------------------\n");
     }
 
 }

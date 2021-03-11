@@ -25,7 +25,7 @@ public class Regras {
             return false;
         }else{
             for(int i = 0; i < margem.size(); i++){
-                for(int j = i+1; j <= margem.size(); j++){
+                for(int j = i+1; j < margem.size(); j++){
                     if(margem.get(i).getCor().equals(margem.get(j).getCor())) //pai e filho da mesma cor estão na mesma margem
                         return false;
                     if(!margem.get(i).isEhPai() && !margem.get(i).getCor().equals(margem.get(j).getCor())) //filho na margem sem o pai da mesma cor
@@ -44,8 +44,8 @@ public class Regras {
     }
 
     static ArrayList<Pinguim> descarregaMargemFinal(ArrayList<Pinguim> margemFinal,ArrayList<Pinguim> jangada){
-        Pinguim aux1 = jangada.get(0); // pai
-        Pinguim aux2 = jangada.get(1); // filho
+        Pinguim aux1 = jangada.get(0); //
+        Pinguim aux2 = jangada.get(1); //
 
         margemFinal.add(aux1);
         jangada.remove(aux1);
@@ -112,8 +112,13 @@ public class Regras {
         jangada.add(margemInicial.get(auxJ));
 
         margemInicial.remove(auxI);
-        margemInicial.remove(auxJ-1);
+
+        if(margemInicial.size() == 1){
+            margemInicial.remove(auxJ);
+        }else if(margemInicial.size() == 0){
+            return;
+        }else{
+            margemInicial.remove(auxJ-1);
+        }
       }
-
-
 }
